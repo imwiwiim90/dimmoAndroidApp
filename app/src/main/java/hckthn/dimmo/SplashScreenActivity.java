@@ -11,6 +11,8 @@ import java.util.Timer;
         import android.os.Bundle;
         import android.view.Window;
 
+import hckthn.dimmo.model.PaymentActivity;
+
 public class SplashScreenActivity extends Activity {
 
     // Set the duration of the splash screen
@@ -33,7 +35,7 @@ public class SplashScreenActivity extends Activity {
 
                 // Start the next activity
                 Intent mainIntent = new Intent().setClass(
-                        SplashScreenActivity.this, MainMenuActivity.class);
+                        SplashScreenActivity.this, PaymentActivity.class);
                 startActivity(mainIntent);
 
                 // Close the activity so the user won't able to go back this

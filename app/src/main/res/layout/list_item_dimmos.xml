@@ -14,7 +14,6 @@
         <ImageView android:id="@+id/image"
             android:layout_width="149dp"
             android:layout_height="165dp"
-            android:src="@drawable/image"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="20dp"
             android:layout_marginRight="41dp" />
@@ -27,7 +26,7 @@
             android:layout_marginRight="21dp"
             android:background="@drawable/precio"
             android:textColor="#98D7D5"
-            android:text="$250K"
+            android:text=""
             android:gravity="center" />
 
     </RelativeLayout>
@@ -46,7 +45,7 @@
             android:textSize="25dp"
             android:textColor="@color/textAccent"
             custom:font="fonts/Univers-Light.otf"
-            android:text="Happy Dog"/>
+            android:text=""/>
 
         <TextView android:id="@+id/description"
             android:layout_width="match_parent"
@@ -55,7 +54,7 @@
             android:layout_marginTop="9dp"
             android:textSize="6pt"
             android:textColor="@color/textMain"
-            android:text="Bulto de Pedigree grande\nCaja pequeña de galletas\n3 paseos semanales"/>
+            android:text=""/>
 
         <Button android:id="@+id/buyBtn"
             android:textAlignment="center"

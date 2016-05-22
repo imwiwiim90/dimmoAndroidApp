@@ -20,7 +20,7 @@
         android:layout_height="35dp"
         android:layout_marginLeft="0dp"
         android:layout_marginTop="10dp"
-        android:src="@mipmap/oval_9"
+        android:src="@drawable/calpaw"
         android:visibility="invisible"/>
 
  </FrameLayout>
