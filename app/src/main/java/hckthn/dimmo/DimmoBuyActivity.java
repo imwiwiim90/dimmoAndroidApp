@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -15,7 +16,6 @@ import org.json.JSONArray;
 
 import java.util.ArrayList;
 
-import hckthn.dimmo.model.Dimmo;
 import hckthn.dimmo.model.Product;
 
 /**
@@ -31,6 +31,12 @@ public class DimmoBuyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dimmo_buy_activity);
 
+        findViewById(R.id.mainFood).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                productsList.setVisibility(View.VISIBLE);
+            }
+        });
         this.productsList = (ListView) findViewById(R.id.listProducts);
         ApiManager.getProducts(this, new ApiManager.Load() {
             @Override
@@ -39,12 +45,38 @@ public class DimmoBuyActivity extends AppCompatActivity {
                 loadProducts();
             }
         });
+        productsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ViewGroup v = (ViewGroup) view;
+                ViewGroup tv = (ViewGroup) findViewById(R.id.mainFood);
+                productsList.setVisibility(View.GONE);
+                ((TextView) tv.findViewById(R.id.name)).setText(((TextView) v.findViewById(R.id.name)).getText());
+            }
+
+        });
+
+        findViewById(R.id.mainCookie).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cookiesList.setVisibility(View.VISIBLE);
+            }
+        });
         this.cookiesList = (ListView) findViewById(R.id.listCookies);
         ApiManager.getProducts(this, new ApiManager.Load() {
             @Override
             public void onLoaded(JSONArray response) {
                 cookies = Product.getFoods(response);
                 loadCookies();
+            }
+        });
+        cookiesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ViewGroup v = (ViewGroup) view;
+                 ViewGroup tv = (ViewGroup) findViewById(R.id.mainCookie);
+                cookiesList.setVisibility(View.GONE);
+                ((TextView) tv.findViewById(R.id.name)).setText(((TextView) v.findViewById(R.id.name)).getText());
             }
         });
 
