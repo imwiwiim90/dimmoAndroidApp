@@ -57,13 +57,13 @@
             android:textColor="@color/textMain"
             android:text="Bulto de Pedigree grande\nCaja pequeña de galletas\n3 paseos semanales"/>
 
-        <Button
+        <Button android:id="@+id/buyBtn"
             android:textAlignment="center"
             android:layout_width="123dp"
             android:layout_height="42dp"
             android:layout_marginBottom="20dp"
             android:stateListAnimator="@null"
-            android:background="@drawable/buy" />
+            android:background="@drawable/buy"/>
 
     </LinearLayout>
 

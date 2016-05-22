@@ -44,9 +44,6 @@ public class MainMenuActivity extends AppCompatActivity {
             public void onLoaded(JSONArray response) {
                 Log.d("something", "eah");
                 dimmos = Dimmo.mainDimmos(response);
-                dimmos.add(dimmos.get(0));
-                dimmos.add(dimmos.get(1));
-                dimmos.add(dimmos.get(2));
                 loadDimmos();
             }
         });
@@ -134,6 +131,16 @@ public class MainMenuActivity extends AppCompatActivity {
                 ((TextView) row.findViewById(R.id.name)).setTextColor(getResources().getColor(R.color.white));
                 ((TextView) row.findViewById(R.id.description)).setTextColor(getResources().getColor(R.color.white));
             }
+            View btn = row.findViewById(R.id.buyBtn);
+            btn.setTag(position);
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int p = (int) v.getTag();
+                    Dimmo dr = dimmos.get(p);
+                    dr.
+                }
+            });
             Log.d("entered",p.image);
             Log.d("666 666", p.image);
             return row;
