@@ -48,15 +48,31 @@
                     android:visibility="gone"/>
             </LinearLayout>
 
-            <TextView
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:text="Selecciona el dia"/>
+                android:background="#F2F4ED"
+                android:paddingLeft="24dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="7dp"
+                android:paddingRight="0dp">
 
-            <hckthn.dimmo.customViews.CustomCalendar
-                android:layout_width="match_parent"
-                android:layout_height="290dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textColor="#505050"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:textSize="8pt"
+                    android:text="Selecciona el dia" />
+
+                <hckthn.dimmo.customViews.CustomCalendar
+                    android:layout_width="match_parent"
+                    android:layout_height="237dp" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -73,13 +89,27 @@
                     android:visibility="gone"/>
             </LinearLayout>
 
-            <hckthn.dimmo.customViews.CustomDayPicker
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:background="#F2F4ED"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="7dp"
+                android:paddingTop="21dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="0dp">
+
+                <hckthn.dimmo.customViews.CustomDayPicker
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp" />
+
+            </LinearLayout>
 
             <Button android:id="@+id/nextBtn"
-                android:layout_width="281dp"
-                android:layout_height="67dp"
+                android:layout_width="275dp"
+                android:layout_height="70dp"
+                android:layout_marginBottom="20dp"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/continuar" />
 
