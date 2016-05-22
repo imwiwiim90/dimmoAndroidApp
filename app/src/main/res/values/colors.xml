@@ -13,4 +13,8 @@
 
     <color name="textAccent">#202020</color>
     <color name="textMain">#505050</color>
+
+    <color name="colorMain1">#98D7D5</color>
+    <color name="colorMain2">#FFF5C3</color>
+    <color name="colorMain3">#505050</color>
 </resources>

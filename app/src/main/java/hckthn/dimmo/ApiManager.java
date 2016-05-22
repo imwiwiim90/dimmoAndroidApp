@@ -19,7 +19,7 @@ import org.json.JSONObject;
  */
 public class ApiManager {
     public static JSONObject dimmos;
-    public static String baseurl = "http://192.168.1.14:9000";
+    public static String baseurl = "http://dimmo.herokuapp.com/";
 
     public static void getDimmmos(Context context, final Load l){
         RequestQueue queue = Volley.newRequestQueue(context);
