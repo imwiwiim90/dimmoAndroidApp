@@ -2,7 +2,8 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="113dp">
+    android:layout_height="113dp"
+    android:layout_margin="10dp">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -23,7 +24,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="20dp"
+            android:textSize="15dp"
             android:textColor="#505050"
             android:layout_marginTop="10dp"
             android:text="Bulto de Pedigree para adulto raza grande de 15kg" />
@@ -41,4 +42,4 @@
 
     </LinearLayout>
 
-</RelativeLayout
+</RelativeLayout>

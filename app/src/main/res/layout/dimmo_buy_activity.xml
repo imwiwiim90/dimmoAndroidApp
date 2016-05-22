@@ -29,6 +29,11 @@
             android:layout_height="200dp"
             android:visibility="gone"/>
     </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Selecciona el dia"/>
     <hckthn.dimmo.customViews.CustomCalendar
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -47,6 +52,11 @@
             android:layout_height="200dp"
             android:visibility="gone"/>
     </LinearLayout>
+    <hckthn.dimmo.customViews.CustomDayPicker
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </hckthn.dimmo.customViews.CustomDayPicker>
     <TextView android:id="@+id/nextBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

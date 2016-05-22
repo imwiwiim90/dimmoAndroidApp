@@ -15,13 +15,13 @@ public class CompletePaymentActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dimmo_complete_payment_activity);
-
+        /*
         ViewGroup food = (ViewGroup) findViewById(R.id.food);
         TextView nameFood = (TextView) food.findViewById(R.id.name);
         nameFood.setText(PaymentHelper.food.name);
         TextView priceFood = (TextView) food.findViewById(R.id.price);
         priceFood.setText(String.valueOf(PaymentHelper.food.price));
-
+        */
         ViewGroup cookie = (ViewGroup) findViewById(R.id.cookie);
         TextView nameCookie = (TextView) cookie.findViewById(R.id.name);
         nameCookie.setText(PaymentHelper.cookie.name);
