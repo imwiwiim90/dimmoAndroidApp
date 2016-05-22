@@ -138,7 +138,7 @@ public class MainMenuActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     int p = (int) v.getTag();
                     Dimmo dr = dimmos.get(p);
-                    dr.
+                    
                 }
             });
             Log.d("entered",p.image);
