@@ -13,7 +13,8 @@
         <ListView android:id="@+id/listProducts"
             android:background="@color/grey"
             android:layout_width="match_parent"
-            android:layout_height="200dp"/>
+            android:layout_height="200dp"
+            android:visibility="gone"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,7 +26,31 @@
         <ListView android:id="@+id/listCookies"
             android:background="@color/grey"
             android:layout_width="match_parent"
-            android:layout_height="200dp"/>
+            android:layout_height="200dp"
+            android:visibility="gone"/>
     </LinearLayout>
+    <hckthn.dimmo.customViews.CustomCalendar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </hckthn.dimmo.customViews.CustomCalendar>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <include layout="@layout/dropdown_item"
+            android:id="@+id/mainWalk"/>
+
+        <ListView android:id="@+id/listWalks"
+            android:background="@color/grey"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:visibility="gone"/>
+    </LinearLayout>
+    <TextView android:id="@+id/nextBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Continuar"
+        android:layout_gravity="center_horizontal"/>
 
 </LinearLayout>

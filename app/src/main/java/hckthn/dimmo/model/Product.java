@@ -25,6 +25,7 @@ public class Product {
                 JSONObject jo = foods.getJSONObject(h);
                 Product p = new Product();
                 p.name = jo.getString("name");
+                p.price = jo.getInt("price");
                 ps.add(p);
             }
         } catch (JSONException e) {
