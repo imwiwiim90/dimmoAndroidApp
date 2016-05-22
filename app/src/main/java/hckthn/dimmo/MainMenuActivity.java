@@ -62,30 +62,19 @@ public class MainMenuActivity extends AppCompatActivity {
     private ArrayList<Dimmo> ge(){
         ArrayList<Dimmo> ps = new ArrayList<>();
         Dimmo p = new Dimmo();
-        p.price = 10000;
-        p.description = "You will wake up with either stab wounds\n" +
-                "Or another persons blood all over you.\n" +
-                "You scum! Kill yourself!!!\n";
-        p.name = "The end is near";
-        ps.add(p);
-        ps.add(p);
-        ps.add(p);
-        ps.add(p);
+
         return ps;
     }
     private void loadDimmos(){
         DimmosAdapter dimmosAdapter = new DimmosAdapter(this,dimmos);
         list.setAdapter(dimmosAdapter);
         dimmosAdapter.notifyDataSetChanged();
-        Log.d("676","loaded into list");
-        Log.d("676",String.valueOf(dimmos.size()));
     }
     private class DimmosAdapter extends BaseAdapter {
         private ArrayList<Dimmo> dimmos;
         private Context context;
 
         public DimmosAdapter(Context context, ArrayList<Dimmo> ps){
-            Log.d("555", "adapter created");
             this.context= context;
             dimmos = ps;
         }
@@ -150,8 +139,6 @@ public class MainMenuActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
-            Log.d("entered",p.image);
-            Log.d("666 666", p.image);
             return row;
         }
     }

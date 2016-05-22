@@ -162,6 +162,8 @@ public class DimmoBuyActivity extends AppCompatActivity {
         }
         Intent intent = new Intent(this, CompletePaymentActivity.class);
         startActivity(intent);
+        finish();
+
     }
     public void loadCookies(){
         ProductAdapter adapter = new ProductAdapter(this,cookies);

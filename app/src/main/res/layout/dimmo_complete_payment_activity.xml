@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <include android:id="@+id/food"
+    <include
         layout="@layout/layout_header"/>
 
     <TextView
@@ -15,6 +15,10 @@
         android:layout_marginTop="15dp"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/mydimmo"/>
+
+    <include android:id="@+id/food"
+        layout="@layout/complete_product_item"/>
+
 
     <include android:id="@+id/cookie"
         layout="@layout/complete_product_item"/>
@@ -25,10 +29,21 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/textAccent"
+        android:layout_gravity="center_horizontal"
+        android:textSize="20dp"
         android:text="Total: "/>
 
     <TextView android:id="@+id/total"
+        android:text="precio"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
+        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:textColor="@color/textMain"/>
+    <Button android:id="@+id/nextBtn"
+        android:layout_width="275dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/continuar" />
 </LinearLayout>
