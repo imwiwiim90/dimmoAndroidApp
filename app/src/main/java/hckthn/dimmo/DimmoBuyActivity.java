@@ -16,6 +16,7 @@ import org.json.JSONArray;
 
 import java.util.ArrayList;
 
+import hckthn.dimmo.model.PaymentHelper;
 import hckthn.dimmo.model.Product;
 
 /**
@@ -52,6 +53,7 @@ public class DimmoBuyActivity extends AppCompatActivity {
                 ViewGroup tv = (ViewGroup) findViewById(R.id.mainFood);
                 productsList.setVisibility(View.GONE);
                 ((TextView) tv.findViewById(R.id.name)).setText(((TextView) v.findViewById(R.id.name)).getText());
+                PaymentHelper.food = (Product) productsList.getAdapter().getItem(position);
             }
 
         });
@@ -77,6 +79,8 @@ public class DimmoBuyActivity extends AppCompatActivity {
                  ViewGroup tv = (ViewGroup) findViewById(R.id.mainCookie);
                 cookiesList.setVisibility(View.GONE);
                 ((TextView) tv.findViewById(R.id.name)).setText(((TextView) v.findViewById(R.id.name)).getText());
+                PaymentHelper.cookie = (Product) cookiesList.getAdapter().getItem(position);
+
             }
         });
 
