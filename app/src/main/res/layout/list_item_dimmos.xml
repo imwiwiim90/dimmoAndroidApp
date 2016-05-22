@@ -26,7 +26,7 @@
             android:layout_marginRight="21dp"
             android:background="@drawable/precio"
             android:textColor="#98D7D5"
-            android:text=""
+            android:text="250K"
             android:gravity="center" />
 
     </RelativeLayout>
