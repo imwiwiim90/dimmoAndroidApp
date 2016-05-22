@@ -24,6 +24,7 @@ public class Dimmo {
                 Dimmo d = new Dimmo();
                 d.name = jo.getString("name");
                 d.description = jo.getString("description");
+                d.image = jo.getString("image");
                 dimmos.add(d);
             }
         } catch (JSONException e) {

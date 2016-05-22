@@ -9,8 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -26,15 +30,23 @@ public class MainMenuActivity extends AppCompatActivity {
     private ListView list;
     private ArrayList<Dimmo> dimmos;
     private DimmosAdapter dimmosAdapter;
+    private ImageLoader imgLoader;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ImageLoader.getInstance().init(ImageLoaderConfiguration.createDefault(MainMenuActivity.this));
         setContentView(R.layout.main_menu_activity);
+
+        imgLoader = ImageLoader.getInstance();
+
         ApiManager.getDimmmos(this, new ApiManager.Load() {
             @Override
             public void onLoaded(JSONArray response) {
                 Log.d("something", "eah");
                 dimmos = Dimmo.mainDimmos(response);
+                dimmos.add(dimmos.get(0));
+                dimmos.add(dimmos.get(1));
+                dimmos.add(dimmos.get(2));
                 loadDimmos();
             }
         });
@@ -64,7 +76,7 @@ public class MainMenuActivity extends AppCompatActivity {
     private void loadDimmos(){
         DimmosAdapter dimmosAdapter = new DimmosAdapter(this,dimmos);
         list.setAdapter(dimmosAdapter);
-
+        dimmosAdapter.notifyDataSetChanged();
         Log.d("676","loaded into list");
         Log.d("676",String.valueOf(dimmos.size()));
     }
@@ -73,6 +85,7 @@ public class MainMenuActivity extends AppCompatActivity {
         private Context context;
 
         public DimmosAdapter(Context context, ArrayList<Dimmo> ps){
+            Log.d("555", "adapter created");
             this.context= context;
             dimmos = ps;
         }
@@ -94,6 +107,7 @@ public class MainMenuActivity extends AppCompatActivity {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
+
             View row = null;
             Dimmo p = dimmos.get(position);
             if (convertView == null) {
@@ -106,8 +120,22 @@ public class MainMenuActivity extends AppCompatActivity {
             }
             ((TextView) row.findViewById(R.id.name)).setText(p.name);
             ((TextView) row.findViewById(R.id.description)).setText(p.description);
+            ImageView imgView = (ImageView) row.findViewById(R.id.image);
+            imgLoader.displayImage(p.image, imgView);
             //((TextView) row.findViewById(R.id.paws)).setText(String.valueOf(p.price));
-
+            if (position % 3 == 0) {
+                row.setBackgroundResource(R.color.colorMain1);
+            }
+            else if (position % 3 == 1) {
+                row.setBackgroundResource(R.color.colorMain2);
+            }
+            else if (position % 3 == 2) {
+                row.setBackgroundResource(R.color.colorMain3);
+                ((TextView) row.findViewById(R.id.name)).setTextColor(getResources().getColor(R.color.white));
+                ((TextView) row.findViewById(R.id.description)).setTextColor(getResources().getColor(R.color.white));
+            }
+            Log.d("entered",p.image);
+            Log.d("666 666", p.image);
             return row;
         }
     }
