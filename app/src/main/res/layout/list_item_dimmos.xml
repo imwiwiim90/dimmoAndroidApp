@@ -1,46 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal" android:layout_width="match_parent"
-    android:padding="10dp"
-    android:layout_height="150dp"
-    android:background="@color/colorBlue">
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:background="#98D7D5">
+
+    <RelativeLayout
+        android:layout_width="203dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true">
+
+        <ImageView
+            android:layout_width="149dp"
+            android:layout_height="165dp"
+            android:src="@drawable/image"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="41dp" />
+
+        <TextView
+            android:layout_width="66dp"
+            android:layout_height="47dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="27dp"
+            android:layout_marginRight="21dp"
+            android:background="@drawable/precio"
+            android:textColor="#98D7D5"
+            android:text="$250K"
+            android:gravity="center" />
+
+    </RelativeLayout>
+
     <LinearLayout
         android:layout_height="match_parent"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
-        <hckthn.dimmo.customViews.PrettyTextView android:id="@+id/name"
+        android:layout_width="191dp"
+        android:orientation="vertical"
+        android:layout_marginTop="31dp"
+        android:layout_marginLeft="24dp">
+
+        <hckthn.dimmo.customViews.PrettyTextView
+            android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="25dp"
             android:textColor="@color/textAccent"
             custom:font="fonts/Univers-Light.otf"
-            android:text="title"/>
+            android:text="Happy Dog"/>
+
         <TextView android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:layout_marginTop="9dp"
+            android:textSize="6pt"
             android:textColor="@color/textMain"
-            android:text="description description description description description description"/>
+            android:text="Bulto de Pedigree grande\nCaja pequeña de galletas\n3 paseos semanales"/>
 
-        <TextView
-            android:text="Comprar"
-            android:padding="10dp"
+        <Button
             android:textAlignment="center"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:background="@color/colorMain"
-            />
+            android:layout_width="123dp"
+            android:layout_height="42dp"
+            android:layout_marginBottom="20dp"
+            android:stateListAnimator="@null"
+            android:background="@drawable/buy" />
+
     </LinearLayout>
-    <ImageView android:id="@+id/image"
-        android:layout_width="100dp"
-        android:layout_height="150dp"
-        android:background="@color/white"/>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#76B5B3"
+        android:layout_alignParentBottom="true" />
 
-
-
-
-
-</LinearLayout>
+</RelativeLayout>
