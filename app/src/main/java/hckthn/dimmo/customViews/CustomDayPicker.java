@@ -27,8 +27,6 @@ public class CustomDayPicker extends LinearLayout {
         days.add("J");
         days.add("V");
         days.add("S");
-
-
     }
     private ViewGroup vgSelected = null;
     public CustomDayPicker(Context context, AttributeSet attrs) {
