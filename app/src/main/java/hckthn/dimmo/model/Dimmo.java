@@ -14,6 +14,7 @@ public class Dimmo {
     public String description = "";
     public String image = "";
     public int price = 0;
+    public JSONObject json ;
 
     public static ArrayList<Dimmo> mainDimmos(JSONArray ja) {
         ArrayList<Dimmo> dimmos = new ArrayList<>();
@@ -22,6 +23,7 @@ public class Dimmo {
             for (int g = 0; g < ja.length() ; g++ ){
                 JSONObject jo = ja.getJSONObject(g);
                 Dimmo d = new Dimmo();
+                d.json = jo;
                 d.name = jo.getString("name");
                 d.description = jo.getString("description");
                 d.image = jo.getString("image");

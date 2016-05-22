@@ -1,6 +1,7 @@
 package hckthn.dimmo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -17,11 +18,13 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 
 import hckthn.dimmo.model.Dimmo;
+import hckthn.dimmo.model.PaymentHelper;
 
 /**
  * Created by WILSOND on 5/21/16.
@@ -138,7 +141,13 @@ public class MainMenuActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     int p = (int) v.getTag();
                     Dimmo dr = dimmos.get(p);
-                    
+                    try {
+                        PaymentHelper.dimmoProducts = dr.json.getJSONArray("products");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    Intent intent = new Intent(MainMenuActivity.this, DimmoBuyActivity.class);
+                    startActivity(intent);
                 }
             });
             Log.d("entered",p.image);
