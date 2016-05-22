@@ -10,14 +10,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+
 import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+import hckthn.dimmo.model.Dimmo;
 import hckthn.dimmo.model.PaymentHelper;
 import hckthn.dimmo.model.Product;
 
@@ -30,10 +36,34 @@ public class DimmoBuyActivity extends AppCompatActivity {
     private ListView cookiesList;
     private ArrayList<Product> cookies;
     private ListView walkList;
+    private ImageLoader imgLoader;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dimmo_buy_activity);
+        ImageLoader.getInstance().init(ImageLoaderConfiguration.createDefault(DimmoBuyActivity.this));
+
+        imgLoader = ImageLoader.getInstance();
+
+        TextView mFoodName = (TextView) findViewById(R.id.mainFood).findViewById(R.id.name);
+        TextView mCookieName = (TextView) findViewById(R.id.mainCookie).findViewById(R.id.name);
+        TextView mWalkName = (TextView) findViewById(R.id.mainWalk).findViewById(R.id.name);
+        ImageView imVFood = (ImageView) findViewById(R.id.mainFood).findViewById(R.id.image);
+        ImageView imVCookie = (ImageView) findViewById(R.id.mainCookie).findViewById(R.id.image);
+        ImageView imVWalk = (ImageView) findViewById(R.id.mainWalk).findViewById(R.id.image);
+
+        try {
+            mFoodName.setText(PaymentHelper.dimmoProducts.getJSONObject(0).getString("name"));
+            mCookieName.setText(PaymentHelper.dimmoProducts.getJSONObject(2).getString("name"));
+            mWalkName.setText(PaymentHelper.dimmoProducts.getJSONObject(1).getString("name"));
+
+            imgLoader.displayImage(PaymentHelper.dimmoProducts.getJSONObject(0).getString("image"), imVFood);
+            imgLoader.displayImage(PaymentHelper.dimmoProducts.getJSONObject(2).getString("image"), imVCookie);
+            imgLoader.displayImage(PaymentHelper.dimmoProducts.getJSONObject(1).getString("image"), imVWalk);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         findViewById(R.id.mainFood).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,7 +76,7 @@ public class DimmoBuyActivity extends AppCompatActivity {
             @Override
             public void onLoaded(JSONArray response) {
                 products = Product.getFoods(response);
-                Log.d("66response",response.toString());
+                Log.d("66response", response.toString());
                 loadProducts();
             }
         });
@@ -79,7 +109,7 @@ public class DimmoBuyActivity extends AppCompatActivity {
         cookiesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.d("itemClick","clicked");
+                Log.d("itemClick", "clicked");
                 ViewGroup v = (ViewGroup) view;
                 ViewGroup tv = (ViewGroup) findViewById(R.id.mainCookie);
                 cookiesList.setVisibility(View.GONE);
@@ -96,13 +126,13 @@ public class DimmoBuyActivity extends AppCompatActivity {
         });
         walkList = (ListView) findViewById(R.id.listWalks);
         ArrayList<Product> walks = new ArrayList<>();
-        for (int i = 1; i < 8; i++) {
-            Product p = new Product();
-            p.name = String.valueOf(i) + " Paseos semanales";
-            walks.add(p);
-        }
-        ProductAdapter adapter = new ProductAdapter(this,walks);
-        walkList.setAdapter(adapter);
+        ApiManager.getWalks(this, new ApiManager.Load() {
+            @Override
+            public void onLoaded(JSONArray response) {
+                walkList.setAdapter(new ProductAdapter(DimmoBuyActivity.this, Product.getFoods(response)));
+            }
+        });
+        //walkList.setAdapter(adapter);
         walkList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -122,6 +152,14 @@ public class DimmoBuyActivity extends AppCompatActivity {
         });
     }
     public void nextAct(){
+        try {
+            if (PaymentHelper.food == null) PaymentHelper.food = Product.getProduct(PaymentHelper.dimmoProducts.getJSONObject(0));
+            if (PaymentHelper.cookie == null) PaymentHelper.cookie = Product.getProduct(PaymentHelper.dimmoProducts.getJSONObject(2));
+            if (PaymentHelper.walk == null) PaymentHelper.walk = Product.getProduct(PaymentHelper.dimmoProducts.getJSONObject(1));
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         Intent intent = new Intent(this, CompletePaymentActivity.class);
         startActivity(intent);
     }

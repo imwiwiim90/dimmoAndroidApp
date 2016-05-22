@@ -68,6 +68,28 @@ public class ApiManager {
     }
     public static void getCookies(Context context, final Load l) {
         RequestQueue queue = Volley.newRequestQueue(context);
+        String url = baseurl + "product/" + "3";
+        Log.d("api","creating request");
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    Log.d("api","loaded");
+                    l.onLoaded(new JSONArray(response));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        queue.add(stringRequest);
+    }
+    public static void getWalks(Context context, final Load l) {
+        RequestQueue queue = Volley.newRequestQueue(context);
         String url = baseurl + "product/" + "2";
         Log.d("api","creating request");
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
@@ -88,7 +110,6 @@ public class ApiManager {
         });
         queue.add(stringRequest);
     }
-
     public interface Load {
         void onLoaded(JSONArray response);
     }
