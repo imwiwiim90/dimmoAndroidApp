@@ -10,10 +10,10 @@ import java.util.ArrayList;
  * Created by WILSOND on 5/21/16.
  */
 public class Dimmo {
-    public String name;
-    public String description;
-    public String image;
-    public int price;
+    public String name = "";
+    public String description = "";
+    public String image = "";
+    public int price = 0;
 
     public static ArrayList<Dimmo> mainDimmos(JSONArray ja) {
         ArrayList<Dimmo> dimmos = new ArrayList<>();

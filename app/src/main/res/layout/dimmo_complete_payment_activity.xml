@@ -8,6 +8,19 @@
         android:layout_height="wrap_content"
         android:text="My Dimmo"/>
     <include android:id="@+id/food"
-        layout="@layout/dropdown_item"/>
+        layout="@layout/complete_product_item"/>
+
+    <include android:id="@+id/cookie"
+        layout="@layout/complete_product_item"/>
+    <include android:id="@+id/walk"
+        layout="@layout/complete_product_item"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total: "/>
+
+    <TextView android:id="@+id/total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

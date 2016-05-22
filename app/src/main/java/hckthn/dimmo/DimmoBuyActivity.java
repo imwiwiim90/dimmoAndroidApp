@@ -1,6 +1,7 @@
 package hckthn.dimmo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 
 import org.json.JSONArray;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import hckthn.dimmo.model.PaymentHelper;
@@ -27,6 +29,7 @@ public class DimmoBuyActivity extends AppCompatActivity {
     private ArrayList<Product> products;
     private ListView cookiesList;
     private ArrayList<Product> cookies;
+    private ListView walkList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,15 +79,49 @@ public class DimmoBuyActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 ViewGroup v = (ViewGroup) view;
-                 ViewGroup tv = (ViewGroup) findViewById(R.id.mainCookie);
+                ViewGroup tv = (ViewGroup) findViewById(R.id.mainCookie);
                 cookiesList.setVisibility(View.GONE);
                 ((TextView) tv.findViewById(R.id.name)).setText(((TextView) v.findViewById(R.id.name)).getText());
                 PaymentHelper.cookie = (Product) cookiesList.getAdapter().getItem(position);
 
             }
         });
+        findViewById(R.id.mainWalk).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                walkList.setVisibility(View.VISIBLE);
+            }
+        });
+        walkList = (ListView) findViewById(R.id.listWalks);
+        ArrayList<Product> walks = new ArrayList<>();
+        for (int i = 1; i < 8; i++) {
+            Product p = new Product();
+            p.name = String.valueOf(i) + " Paseos semanales";
+            walks.add(p);
+        }
+        ProductAdapter adapter = new ProductAdapter(this,walks);
+        walkList.setAdapter(adapter);
+        walkList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ViewGroup v = (ViewGroup) view;
+                ViewGroup tv = (ViewGroup) findViewById(R.id.mainWalk);
+                walkList.setVisibility(View.GONE);
+                ((TextView) tv.findViewById(R.id.name)).setText(((TextView) v.findViewById(R.id.name)).getText());
+                PaymentHelper.walk = (Product) walkList.getAdapter().getItem(position);
+            }
+        });
 
-
+        findViewById(R.id.nextBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nextAct();
+            }
+        });
+    }
+    public void nextAct(){
+        Intent intent = new Intent(this, CompletePaymentActivity.class);
+        startActivity(intent);
     }
     public void loadCookies(){
         ProductAdapter adapter = new ProductAdapter(this,cookies);

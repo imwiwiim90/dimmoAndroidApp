@@ -3,4 +3,6 @@
     <declare-styleable name="PrettyTextView">
         <attr name="font" format="string"/>
     </declare-styleable>
+    <declare-styleable name="CustomCalendar">
+    </declare-styleable>
 </resources>
