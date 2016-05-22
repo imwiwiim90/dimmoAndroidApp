@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorAccent">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/PublicationTitle"
+        android:singleLine="true"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:hint="@string/PublicationText"/>
+        <ImageView
+            android:layout_gravity="right|bottom"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@color/grey"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"/>
+    </FrameLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:layout_margin="5dp"
+            android:textAlignment="center"
+            android:text="@string/acceptBtn"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:layout_margin="5dp"
+            android:textAlignment="center"
+            android:text="@string/cancelBtn"/>
+    </LinearLayout>
+</LinearLayout>

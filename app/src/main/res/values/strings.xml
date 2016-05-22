@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Dimmo</string>
+
+
+    <!-- services -->
+    <string name="serviceVeterinary">Veterinaria</string>
+    <string name="serviceHotel">Guarderia</string>
+    <string name="serviceTools">Accesorios</string>
+    <string name="serviceHair">Peluqueria</string>
+    <string name="serviceWalk">Paseo</string>
+    <string name="serviceMatch">Amor</string>
+    <string name="serviceAdopt">Adopción</string>
+
+    <!-- buttons -->
+    <string name="acceptBtn">aceptar</string>
+    <string name="cancelBtn">cancelar</string>
+
+    <!-- Models -->
+    <!-- Publication -->
+    <string name="PublicationTitle">tu pregunta</string>
+    <string name="PublicationText">descripción</string>
+</resources>
