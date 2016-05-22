@@ -1,22 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="75dp"
-        android:background="@color/colorMain"/>
-    <TextView android:id="@+id/name"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:textSize="25dp"
-        android:text="name"
-        />
-    <TextView android:id="@+id/price"
-        android:layout_gravity="center_vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="price"/>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="113dp">
 
-</LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="89dp"
+        android:padding="10dp"
+        android:layout_centerInParent="true"
+        android:background="#F8F8F0">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="75dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/galletas"/>
+
+        <TextView android:id="@+id/name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:textColor="#505050"
+            android:layout_marginTop="10dp"
+            android:text="Bulto de Pedigree para adulto raza grande de 15kg" />
+
+        <TextView android:id="@+id/price"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF7260"
+            android:textSize="10pt"
+            android:textStyle="bold"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="10dp"
+            android:text="125K" />
+
+    </LinearLayout>
+
+</RelativeLayout
