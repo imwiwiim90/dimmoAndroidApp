@@ -46,6 +46,7 @@ public class DimmoBuyActivity extends AppCompatActivity {
             @Override
             public void onLoaded(JSONArray response) {
                 products = Product.getFoods(response);
+                Log.d("66response",response.toString());
                 loadProducts();
             }
         });
@@ -68,7 +69,7 @@ public class DimmoBuyActivity extends AppCompatActivity {
             }
         });
         this.cookiesList = (ListView) findViewById(R.id.listCookies);
-        ApiManager.getProducts(this, new ApiManager.Load() {
+        ApiManager.getCookies(this, new ApiManager.Load() {
             @Override
             public void onLoaded(JSONArray response) {
                 cookies = Product.getFoods(response);
@@ -78,6 +79,7 @@ public class DimmoBuyActivity extends AppCompatActivity {
         cookiesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.d("itemClick","clicked");
                 ViewGroup v = (ViewGroup) view;
                 ViewGroup tv = (ViewGroup) findViewById(R.id.mainCookie);
                 cookiesList.setVisibility(View.GONE);
