@@ -10,8 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,18 +36,31 @@ public class DimmoBuyActivity extends AppCompatActivity {
     private ListView cookiesList;
     private ArrayList<Product> cookies;
     private ListView walkList;
+    private ImageLoader imgLoader;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dimmo_buy_activity);
+        ImageLoader.getInstance().init(ImageLoaderConfiguration.createDefault(DimmoBuyActivity.this));
+
+        imgLoader = ImageLoader.getInstance();
 
         TextView mFoodName = (TextView) findViewById(R.id.mainFood).findViewById(R.id.name);
         TextView mCookieName = (TextView) findViewById(R.id.mainCookie).findViewById(R.id.name);
         TextView mWalkName = (TextView) findViewById(R.id.mainWalk).findViewById(R.id.name);
+        ImageView imVFood = (ImageView) findViewById(R.id.mainFood).findViewById(R.id.image);
+        ImageView imVCookie = (ImageView) findViewById(R.id.mainCookie).findViewById(R.id.image);
+        ImageView imVWalk = (ImageView) findViewById(R.id.mainWalk).findViewById(R.id.image);
+
         try {
             mFoodName.setText(PaymentHelper.dimmoProducts.getJSONObject(0).getString("name"));
             mCookieName.setText(PaymentHelper.dimmoProducts.getJSONObject(2).getString("name"));
             mWalkName.setText(PaymentHelper.dimmoProducts.getJSONObject(1).getString("name"));
+
+            imgLoader.displayImage(PaymentHelper.dimmoProducts.getJSONObject(0).getString("image"), imVFood);
+            imgLoader.displayImage(PaymentHelper.dimmoProducts.getJSONObject(2).getString("image"), imVCookie);
+            imgLoader.displayImage(PaymentHelper.dimmoProducts.getJSONObject(1).getString("image"), imVWalk);
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -135,6 +152,14 @@ public class DimmoBuyActivity extends AppCompatActivity {
         });
     }
     public void nextAct(){
+        try {
+            if (PaymentHelper.food == null) PaymentHelper.food = Product.getProduct(PaymentHelper.dimmoProducts.getJSONObject(0));
+            if (PaymentHelper.cookie == null) PaymentHelper.cookie = Product.getProduct(PaymentHelper.dimmoProducts.getJSONObject(2));
+            if (PaymentHelper.walk == null) PaymentHelper.walk = Product.getProduct(PaymentHelper.dimmoProducts.getJSONObject(1));
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         Intent intent = new Intent(this, CompletePaymentActivity.class);
         startActivity(intent);
     }

@@ -33,4 +33,14 @@ public class Product {
         }
         return ps;
     }
+    public static Product getProduct(JSONObject jo) {
+        Product p = new Product();
+        try {
+            p.name = jo.getString("name");
+            p.price = jo.getInt("price");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return p;
+    }
 }
